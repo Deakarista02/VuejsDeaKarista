@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="dist/output.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+        <div class="container">
+            <div class="flex items-center justify-between relative">
+                <div class="px-6">
+                    <a href="#home" class="font-bold text-teal-500 block py-6 text-xl">KEDAI KOPI</a>
+                </div>
+                <div class="flex items-center px-6">
+                    <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+                        <span class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out origin-top-left"></span>
+                        <span class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out"></span>
+                        <span class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out origin-bottom-left "></span>
+                    </button>
+
+                    <Nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg: bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none ">
+                        <ul class="block lg:flex">
+                            <li class="group">
+                                <a href="#home" class="text-base text-slate-900 py-2 mx-8 flex group-hover:text-teal-500 ">Beranda</a>
+                            </li>
+                            <li class="group">
+                                <a href="#kopi" class="text-base text-slate-900 py-2 mx-8 flex group-hover:text-teal-500 ">Menu Kopi</a>
+                            </li>
+                            <li class="group">
+                                <a href="#pesanan" class="text-base text-slate-900 py-2 mx-8 flex group-hover:text-teal-500 ">Pesanan</a>
+                            </li>
+                        </ul>
+                    </Nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="home" class="pt-20">
+        <div class="container">
+            <div class="flex flex-wrap justify-center">
+                <div class="w-full self-center px-6 mb-15 lg:w-1/2"> 
+                    <h1 class="block font-bold text-slate-900 text-2xl mt-1 lg:text-3xl "> Delicius Coffee For,
+                        <span class="block font-bold text-slate-900 text-2xl mt-1 lg:text-3xl">Today, tomorrow and Beyond</span> </h1>
+                    <h2 class="font-medium text-slate-500 text-lg mb-10 lg:text-md">Ayo segera pilih dan pesan kopi favorit Anda</h2>
+    
+                </div>
+                <div class="w-full self-end px-4 lg:w-1/2">
+                    <div class="mt-10 lg:mt-9 lg:right-0">
+                        <img src="dist/img/foto.png" alt="dea karista" class="max-w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div> 
+      </section>
+      <section id="kopi">
+        <div class="container">
+            <div class="mx-auto max-w-7xl py-10 sm:px-6 lg:px-8" id="app">
+                <div class="flex flex-wrap my-5 -mx-2">
+                    <div class="w-full">
+                        <h1 class="text-center text-2xl font-bold  text-slate-900 mb-6 mt-6">MENU KOPI</h1>
+                        <div class="w-full mt-14 px-8 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-1 lg:grid-cols-2 md:gap-x-4 xl:gap-x-4">
+                            <div v-for="(product, index) in products" :key="index" class="rounded-lg max-w-md overflow-hidden hover:bg-white shadow-md dark:bg-neutral-700 text-center">
+                                <a href="#!">
+                                    <img class="w-full h-80 mb-2 object-cover rounded-t-lg" :src="`dist/images/${product.gambar}`" alt="Gambar {{ product.nama }}">
+                                    <p>{{ product.nama }}</p>
+                                    <p>Harga: Rp {{ product.harga }}</p>
+                                </a>
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mt-4">
+                                        <a href="#" class="text-sm font-medium bg-teal-500 text-white px-3 py-1 rounded hover:bg-teal-300">Tambahkan</a>
+                                        <a href="#" class="text-sm font-medium bg-teal-500 text-white px-3 py-1 rounded hover:bg-teal-300">Pesan</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+      <section id="pesanan">
+        <div class="container">
+            <div class="mx-auto max-w-7xl py-10 w-full lg:w-2/5 shadow-lg lg:p-10">
+                <div class="flex flex-wrap justify-center my-5 px-5 mt-5 border-b-2">
+                    <div>
+                        <span class="font-bold text-xl">PESANAN</span>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold">Americano</h3>
+                        <p>Harga: 15000</p>
+                        <p>Jumlah: 1</p>
+                        <p>Meja: 1</p>
+                        <p>Hot</p>
+                        <button class="px-3 py-1 bg-teal-500 text-white rounded hover:bg-teal-500">Hapus</button>
+                        <button class="px-3 py-1 bg-teal-700 text-white rounded hover:bg-teal-700">Tambahkan</button>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold">Vanilla Latte</h3>
+                        <p>Harga: 25000</p>
+                        <p>Jumlah: 1</p>
+                        <p>Meja: 1</p>
+                        <p>Ice</p>
+                        <button class="px-3 py-1 bg-teal-500 text-white rounded hover:bg-teal-500">Hapus</button>
+                        <button class="px-3 py-1 bg-teal-700 text-white rounded hover:bg-teal-700">Tambahkan</button>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button class="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-500">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+
+      </section>
+      
+    
+    
+</body>
+<script>
+    const { createApp, ref } = Vue;
+
+    const app = createApp({
+        data() {
+            return {
+                products: [
+                    {
+                        "id": 1,
+                        "kode": "K-01",
+                        "nama": "Americano",
+                        "harga": 15000,
+                        "is_ready": true,
+                        "gambar": "Americano.jpg"
+                    },
+                    {
+                        "id": 2,
+                        "kode": "K-02",
+                        "nama": "Cappuccino",
+                        "harga": 17000,
+                        "is_ready": true,
+                        "gambar": "Cappuccino.jpg"
+                    },
+                    {
+                        "id": 3,
+                        "kode": "K-03",
+                        "nama": "Vanilla Latte",
+                        "harga": 25000,
+                        "is_ready": true,
+                        "gambar": "Vanilla Latte.jpg"
+                    },
+                    {
+                        "id": 4,
+                        "kode": "K-04",
+                        "nama": "Macchiato",
+                        "harga": 20000,
+                        "is_ready": true,
+                        "gambar": "Macchiato.jpg"
+                    },
+                    {
+                        "id": 5,
+                        "kode": "K-05",
+                        "nama": "Mocha Latte",
+                        "harga": 22000,
+                        "is_ready": true,
+                        "gambar": "Mocha Latte.jpg"
+                    },
+                    {
+                        "id": 6,
+                        "kode": "K-06",
+                        "nama": "Espresso",
+                        "harga": 15000,
+                        "is_ready": true,
+                        "gambar": "Espresso.jpg"
+                    },
+                ],
+            };
+        },
+        methods: {
+            clearCart() {
+                // Tambahkan logika untuk menghapus keranjang di sini
+            },
+        },
+    });
+
+    app.mount('#app');
+</script>
+</html>
